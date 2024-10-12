@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $mysqli = $_DB;
 
-    $sql = sprintf("SELECT * FROM users WHERE username = '%s' ", $mysqli->real_escape_string($_POST['username']));
+    $sql = sprintf("SELECT id, password_hash FROM users WHERE username = '%s' ", $mysqli->real_escape_string($_POST['username']));
 
     $result = $mysqli->query($sql);
 
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $_SESSION['user_id'] = $user['id'];
 
-            header('Location: ../main.php');
+            header('Location: ../../index.php');
 
             exit;
         

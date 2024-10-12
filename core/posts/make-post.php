@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
     
     $title = htmlspecialchars($_POST['title']); 
-    $body = htmlspecialchars($_POST['body']); 
+    $body = $mysqli->real_escape_string($_POST['body']); 
     $poster = $_POST['user_id'];
     $created_at = time();
 

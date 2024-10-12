@@ -15,8 +15,10 @@ if (empty($_SESSION['user_id'])) {
         <title>Post</title>
         <meta charset="UTF-8">
         <?php include '../html-elements/header.php' ?> 
-        
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 
     </head>
 
@@ -36,7 +38,7 @@ if (empty($_SESSION['user_id'])) {
 
             <div>
                 <label for="body">Body</label>
-                <textarea type="textarea" id="body" name="body" required></textarea>
+                <textarea type="textarea" id="body" name="body"></textarea>
             </div>
 
 
@@ -48,5 +50,11 @@ if (empty($_SESSION['user_id'])) {
 
         
     </body>
+
+    <script>
+      const easymde = new EasyMDE({
+        element: document.getElementById('body'),
+      });
+    </script>
 
 </html>

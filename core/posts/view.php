@@ -2,6 +2,9 @@
 
 require_once '../../config.php';
 
+use Michelf\Markdown;
+
+
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] === "GET") {
@@ -23,6 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $result = $mysqli->query($sql);
     
         $post = $result->fetch_assoc();
+
+        $post_html = Markdown::defaultTransform($post['body']);
     
         if (!$post) {
             header("Location: ../errors/post-view.php");
@@ -57,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
         <h1><?= $post['title'] ?></h1>
 
-        <p><?= $post['body'] ?></p>
+        <p><?= $post_html ?></p>
   
         <h5>Posted by: <a href="/core/users/user.php?user_id=<?= $post['poster'] ?>"><?= get_user_name($post['poster']) ?></h5>
 

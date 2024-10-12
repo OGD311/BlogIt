@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => 'f97f1afa5d4d5246052f5a0382b2d6da6406d8c2',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => 'f97f1afa5d4d5246052f5a0382b2d6da6406d8c2',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -25,6 +25,15 @@
             'reference' => '3ba905c11371512af9d9bdd27d99b782216b6945',
             'type' => 'library',
             'install_path' => __DIR__ . '/../graham-campbell/result-type',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'michelf/php-markdown' => array(
+            'pretty_version' => '2.0.0',
+            'version' => '2.0.0.0',
+            'reference' => 'eb176f173fbac58a045aff78e55f833264b34e71',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../michelf/php-markdown',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

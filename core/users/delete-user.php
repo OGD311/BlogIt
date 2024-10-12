@@ -10,15 +10,15 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
         $mysqli->begin_transaction();
     
-        $userId = (int)$_POST['user_id'];
+        $user_id = (int)$_POST['user_id'];
     
         $sql = "DELETE FROM users WHERE id = ?";
         if ($stmt = $mysqli->prepare($sql)) {
-            $stmt->bind_param("i", $userId);
+            $stmt->bind_param("i", $user_id);
             if ($stmt->execute()) {
 
                 $mysqli->commit();
-                if ($_SESSION['user_id'] == $userId) {
+                if ($_SESSION['user_id'] == $user_id) {
                     session_destroy();
                 }
                 header('Location: /core/main.php');

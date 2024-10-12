@@ -54,6 +54,12 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editing <?= $postData['title'] ?>'s Profile</title>
     <?php include '../html-elements/header.php' ?>
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
+
+
  
 </head>
 <body>
@@ -71,8 +77,10 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         
         <br>
 
-        <label for="name">Body</label>
-        <input type="text" name="body" value="<?= $postData['body'] ?>">
+        <div>
+            <label for="body">Body</label>
+            <textarea type="textarea" id="body" name="body"></textarea>
+        </div>
 
         <br>
 
@@ -82,17 +90,27 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
 
     <form action="delete-post.php" method="post" onsubmit="return confirm('Delete Account? This cannot be undone.');">
-        <input type="hidden" name="user_id" value="<?= $userData['id'] ?>">
-
+        <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
+        <input type="hidden" name="post_id" value="<?= $post_id ?>">
+        
         <button class="btn danger">Delete Post</button>
     </form>
 
     <br>
     <a href="/core/posts/view.php?post_id=<?= $postData['id'] ?>" class="btn secondary">Close</a>
 
-    
+
 
 
     <?php include '../html-elements/footer.php'; ?>
     
+
+    <script>
+      const easymde = new EasyMDE({
+        element: document.getElementById('body'),
+      });
+
+      easymde.value("<?= $postData['body'] ?>");
+    </script>
+
 </body>

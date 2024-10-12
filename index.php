@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     exit("GET Requests only");
 }
 
+var_dump($number_of_pages, $current_page_number)
 ?>
 
 <!DOCTYPE html>
@@ -77,9 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                 } else {
                     echo "<p>Error: " . htmlspecialchars($mysqli->error) . "</p>";
                 }
-                if ($current_page_number == $number_of_pages) {
-                    echo "<p>You've reached the end!<br>If you got here from just scrolling I would be concerned...<br><a href='index.php?page=1'>Go Home</a></p>";
-                }
+
             ?>
         </div>
 
@@ -95,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                 if ($current_page_number > $number_of_pages) {
                     echo "<span>
                     <strong> No posts to display! </strong>
-                    <p>Why don't you <a href='posts/upload.php'>upload</a> one?</p>";
+                    <p>Why don't you <a href='posts/post.php'>make a post</a>?</p>";
 
                 } else if ($current_page_number == $number_of_pages && $current_page_number == 1) {
                     echo '<span>
@@ -106,6 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
                     <a href="index.php?page=1">1</a> 
                     ... <a href="index.php?page=' . ($current_page_number - 1) . '&search='. $searchList .'&order_by='. $order_by .'"><<</a>
                     <strong> ' . $current_page_number . ' </strong>';
+                    echo "<p>You've reached the end!<br>If you got here from just scrolling I would be concerned...<br><a href='index.php?page=1'>Go Home</a></p>";
                     
 
                 } else if ($current_page_number == 1) {
