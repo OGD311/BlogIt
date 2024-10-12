@@ -1,0 +1,18 @@
+.profile-picture {
+    width: 150px;
+    height: 150px; 
+    border-radius: 50%; 
+    border: 5px solid black; 
+    object-fit: contain; 
+}
+
+
+.profile-details {
+    display: inline-flex;
+}
+
+.is-admin {
+    color: goldenrod;
+}
+
+

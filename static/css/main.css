@@ -1,0 +1,48 @@
+body {
+    background-color: #4C4E52;
+    color: #b9b6b1;
+    margin: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+nav {
+    background-color: #cc5500;
+}
+
+nav>ul {
+    display: inline-block;
+}
+
+nav>ul>li {
+    display: inline-block;
+}
+
+#content {
+    width: 80%;
+    background-color: rgb(235,245,255);
+    margin: 0 auto;
+}
+
+
+.btn {
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 15px 32px; /* Top and bottom padding, left and right padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make the button inline-block */
+    font-size: 16px; /* Text size */
+    margin: 4px 2px; /* Small margin */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 25px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+}
+
+.btn.primary {
+    background-color: rgb(8, 66, 255);
+}
+
+.btn.danger {
+    background-color: red;
+}
+
