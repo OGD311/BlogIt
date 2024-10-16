@@ -24,9 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
 
     $sql = "SELECT p.id, p.title, p.body, p.poster, p.created_at
         FROM posts p 
+        ORDER BY created_at DESC
         LIMIT " . $_POSTS_PER_PAGE . " 
         OFFSET " . (($current_page_number - 1) * $_POSTS_PER_PAGE) . ";";
-
 
     $result = $mysqli->query($sql);
 
@@ -41,7 +41,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     exit("GET Requests only");
 }
 
-var_dump($number_of_pages, $current_page_number)
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +48,6 @@ var_dump($number_of_pages, $current_page_number)
     <head>
         <title>Home</title>
         <?php include 'core/html-elements/header.php' ?>
-        <link rel="stylesheet" href="/static/css/ratings.css">
         <meta charset="UTF-8">
     </head>
 
@@ -63,15 +61,17 @@ var_dump($number_of_pages, $current_page_number)
         <br>
 
 
-        <div id="posts" class="container-fluid text-center row justify-content-center">
+        <div id="posts" class="">
             <?php
                 if ($result) {
                     foreach ($posts as $post) {
                         echo '
-                        <div>
+                        <div id="post">
                         <a href="/core/posts/view.php?post_id=' . $post['id'] . '">
-                        <p><strong>' . $post['title'] .'</strong>' . $post['body'] . '</p>
-                        <p>' . get_user_name($post['poster']) . ' - ' . date('d/m/Y H:i', $post['created_at']) . '</p>
+                        <h2>' . $post['title'] . '</h2>
+                        <p>' . preg_replace('/[^A-Za-z\-]/', '', substr($post['body'], 0, 60)) . '</p>
+                       
+                        <p>' . get_user_name($post['poster']) . ' - ' . date('d/m/Y', $post['created_at']) . '</p>
                         </a>
                         </div>';
                     }

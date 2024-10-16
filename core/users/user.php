@@ -40,7 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         SELECT 
             p.id, 
             p.title, 
-            p.body 
+            p.body,
+            p.created_at
         FROM 
             posts p 
         WHERE 
@@ -99,20 +100,29 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         <a href="edit.php?user_id=<?= $userData['id'] ?>">Edit Profile</a>
     <?php endif ?>
 
-    <h5>Joined on <?= date("d/m/Y", strtotime($userData['created_at'])); ?></h5>
+    <h5>Joined on <?= date("d/m/Y", $userData['created_at']); ?></h5>
 
     <h2>Posts</h2>
-    <ul>
-        <?php foreach ($postsData as $post) : ?>
-            <li>
-                <a href="/core/posts/view.php?post_id=<?= htmlspecialchars($post['id']) ?>">
-                    <strong><?= htmlspecialchars($post['title']) ?></strong> 
-                    <p><?= htmlspecialchars($post['body']) ?></p>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+        <div id="posts">
+            <?php
+                if ($postsData) {
+                    foreach ($postsData as $post) {
+                        echo '
+                        <div id="post">
+                        <a href="/core/posts/view.php?post_id=' . $post['id'] . '">
+                        <h2>' . $post['title'] . '</h2>
+                        <p>' . preg_replace('/[^A-Za-z\-]/', '', substr($post['body'], 0, 60)) . '</p>
+                        
+                        <p>'. date('d/m/Y', $post['created_at']) . '</p>
+                        </a>
+                        </div>';
+                    }
+                } else {
+                    echo "<p>Error: " . htmlspecialchars($mysqli->error) . "</p>";
+                }
 
+            ?>
+        </div>
     <?php include '../html-elements/footer.php'; ?>
 </body>
 </html>

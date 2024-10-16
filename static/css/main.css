@@ -17,32 +17,22 @@ nav>ul>li {
     display: inline-block;
 }
 
-#content {
-    width: 80%;
-    background-color: rgb(235,245,255);
-    margin: 0 auto;
+#posts {
+    display: flex;
+    padding: 5px;
+    gap: 10px; /* Adjust the value to your desired spacing */
+}
+
+#posts #post {
+    justify-content: center;
+    text-align: center;
+    border: 2px solid #cc5500;
+    border-radius: 5px;
+    padding: 10px; /* Optional: Add padding inside each post */
 }
 
 
-.btn {
-    border: none; /* Remove borders */
-    color: white; /* White text */
-    padding: 15px 32px; /* Top and bottom padding, left and right padding */
-    text-align: center; /* Center the text */
-    text-decoration: none; /* Remove underline */
-    display: inline-block; /* Make the button inline-block */
-    font-size: 16px; /* Text size */
-    margin: 4px 2px; /* Small margin */
-    cursor: pointer; /* Pointer cursor on hover */
-    border-radius: 25px; /* Rounded corners */
-    transition: background-color 0.3s; /* Smooth transition for background color */
+#post a {
+    text-decoration: none;
+    color: inherit;
 }
-
-.btn.primary {
-    background-color: rgb(8, 66, 255);
-}
-
-.btn.danger {
-    background-color: red;
-}
-

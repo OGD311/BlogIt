@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editing <?= $postData['title'] ?>'s Profile</title>
     <?php include '../html-elements/header.php' ?>
-
+    <link rel="stylesheet" href="/static/css/edit.css">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
